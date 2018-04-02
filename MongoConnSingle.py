@@ -2,8 +2,7 @@
 import pymongo
 import sys
 import traceback
-# import ServerConfig
-from ServerConfig import *
+
 
 class Singleton(object):
     # 单例模式写法,参考：http://ghostfromheaven.iteye.com/blog/1562618

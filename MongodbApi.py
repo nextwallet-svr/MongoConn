@@ -1,5 +1,5 @@
 #coding=utf-8
-from MongoConnSingle import MongoConn
+from .MongoConnSingle import MongoConn
 import traceback
 
 import functools
