@@ -17,7 +17,7 @@ class MongoConn(Singleton):
     def __init__(self, DB_CONFIG):
         # connect db
         try:
-            self.conn = pymongo.MongoClient(DB_CONFIG['host'], DB_CONFIG['port'])
+            self.conn = pymongo.MongoClient(DB_CONFIG['host'], DB_CONFIG['port'], connect=False)
             self.db = self.conn[DB_CONFIG['db_name']]  # connect db
             self.username=DB_CONFIG['username']
             self.password=DB_CONFIG['password']  
@@ -35,7 +35,7 @@ class BtcMongoConn(Singleton):
     def __init__(self):
         # connect db
         try:
-            self.conn = pymongo.MongoClient(BTC_MONGODB_CONFIG['host'], BTC_MONGODB_CONFIG['port'])
+            self.conn = pymongo.MongoClient(BTC_MONGODB_CONFIG['host'], BTC_MONGODB_CONFIG['port'], connect=False)
             self.db = self.conn[BTC_MONGODB_CONFIG['db_name']]  # connect db
             self.username=BTC_MONGODB_CONFIG['username']
             self.password=BTC_MONGODB_CONFIG['password']  
