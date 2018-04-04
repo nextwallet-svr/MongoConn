@@ -20,5 +20,5 @@ WHEN USING `git submodule update`, try:
 INIT submodule for the first time:  
 `git submodule update --init --recursive`
 
-CLONE:
+CLONE a project have submodules:  
 `git clone --recursive xxxxxxxxx`
