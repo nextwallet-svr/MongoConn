@@ -13,3 +13,12 @@ MONGODB_CONFIG = {
 ``` 
 
 END  
+
+WHEN USING `git submodule update`, try:  
+`git submodule update --recursive` or `git pull --recurse-submodules`
+
+INIT submodule for the first time:  
+`git submodule update --init --recursive`
+
+CLONE:
+`git clone --recursive xxxxxxxxx`
