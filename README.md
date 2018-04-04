@@ -12,7 +12,6 @@ MONGODB_CONFIG = {
 }
 ``` 
 
-END  
 
 WHEN USING `git submodule update`, try:  
 `git submodule update --recursive` or `git pull --recurse-submodules`
