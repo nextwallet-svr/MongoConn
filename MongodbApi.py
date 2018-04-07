@@ -134,3 +134,13 @@ def select_colum(table, value, colum):
     except Exception:
         traceback.print_exc()
         raise
+
+@graceful_auto_reconnect
+def aggregate(table, arg):
+    #查询指定列的所有值
+    try:
+        global my_conn
+        return my_conn.db[table].aggregate(arg)
+    except Exception:
+        traceback.print_exc()
+        raise
