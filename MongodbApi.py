@@ -39,9 +39,9 @@ def close_conn():
     my_conn.conn.close()
 
 @graceful_auto_reconnect
-def remove(table):
+def remove(table, conditions):
     global my_conn
-    my_conn.db[table].remove()
+    my_conn.db[table].remove(conditions)
 
 @graceful_auto_reconnect
 def save(table, value):
