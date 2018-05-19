@@ -18,7 +18,7 @@ class MongoConn(Singleton):
         # connect db
         try:
             if 'uri' in DB_CONFIG:
-                self.conn = MongoClient(DB_CONFIG['uri'])
+                self.conn = pymongo.MongoClient(DB_CONFIG['uri'])
                 self.db = self.conn[DB_CONFIG['db_name']]  # connect db
                 self.connected = True
             else:
