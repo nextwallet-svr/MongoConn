@@ -110,7 +110,7 @@ def find_one(table, value):
     #根据条件进行查询，返回一条记录
     try:
         global my_conn
-        return my_conn.db[table].find_one(value, max_time_ms=5000)
+        return my_conn.db[table].find_one(value, max_time_ms=15000)
     except Exception:
         traceback.print_exc()
         raise
@@ -120,7 +120,7 @@ def find(table, value):
     #根据条件进行查询，返回所有记录
     try:
         global my_conn
-        return my_conn.db[table].find(value, max_time_ms=5000)
+        return my_conn.db[table].find(value, max_time_ms=15000)
     except Exception:
         traceback.print_exc()
         raise
