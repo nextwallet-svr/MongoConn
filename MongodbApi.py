@@ -64,6 +64,19 @@ def insert(table, value):
         raise
         # print(value)
 
+
+@graceful_auto_reconnect
+def insert_many(table, value, ordered=False):
+    # 插入多条， 不按顺序， 默认出错会跳过
+    try:
+        global my_conn
+        result = my_conn.db[table].insert_many(value, ordered=ordered)
+        return result
+    except (Exception) as e:
+        print("insert: ", e)
+        raise
+
+
 @graceful_auto_reconnect
 def update(table, conditions, value, s_upsert=False, s_multi=False):
     try:
