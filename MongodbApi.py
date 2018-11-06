@@ -4,6 +4,7 @@ import traceback
 
 import functools
 import pymongo
+from pymongo import ReturnDocument
 import logging
 import time
 
@@ -154,6 +155,16 @@ def aggregate(table, arg):
     try:
         global my_conn
         return my_conn.db[table].aggregate(arg)
+    except Exception:
+        traceback.print_exc()
+        raise
+
+@graceful_auto_reconnect
+def find_one_and_update(table, cond, value, return_document=ReturnDocument.AFTER):
+    #查询指定列的所有值
+    try:
+        global my_conn
+        return my_conn.db[table].find_one_and_update(cond, value, return_document=return_document)
     except Exception:
         traceback.print_exc()
         raise
