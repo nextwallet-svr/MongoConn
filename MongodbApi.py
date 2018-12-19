@@ -120,21 +120,27 @@ def upsert_one(table, data):
         raise
 
 @graceful_auto_reconnect
-def find_one(table, value):
+def find_one(table, value, field_filter = None):
     #根据条件进行查询，返回一条记录
     try:
         global my_conn
-        return my_conn.db[table].find_one(value, max_time_ms=15000)
+        if field_filter:
+            return my_conn.db[table].find_one(value, field_filter, max_time_ms=15000)
+        else:
+            return my_conn.db[table].find_one(value, max_time_ms=15000)
     except Exception:
         traceback.print_exc()
         raise
 
 @graceful_auto_reconnect
-def find(table, value):
+def find(table, value, field_filter=None):
     #根据条件进行查询，返回所有记录
     try:
         global my_conn
-        return my_conn.db[table].find(value, max_time_ms=15000)
+        if field_filter:
+            return my_conn.db[table].find(value, field_filter, max_time_ms=15000)
+        else:
+            return my_conn.db[table].find(value, max_time_ms=15000)
     except Exception:
         traceback.print_exc()
         raise
@@ -160,11 +166,11 @@ def aggregate(table, arg):
         raise
 
 @graceful_auto_reconnect
-def find_one_and_update(table, cond, value, return_document=ReturnDocument.AFTER):
+def find_one_and_update(table, cond, value, upsert=False, return_document=ReturnDocument.AFTER):
     #查询指定列的所有值
     try:
         global my_conn
-        return my_conn.db[table].find_one_and_update(cond, value, return_document=return_document)
+        return my_conn.db[table].find_one_and_update(cond, value, upsert=upsert, return_document=return_document)
     except Exception:
         traceback.print_exc()
         raise
